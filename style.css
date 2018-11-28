@@ -1,0 +1,114 @@
+h1 {
+    text-align: center;
+    margin-bottom:1em;
+}
+
+h2 {
+    text-align: center;
+    font-size:1em;
+    margin:.5em;
+}
+
+h3 {
+    text-align: center;
+        font-size:1em;
+    margin:.5em;
+}
+
+hr {
+    width:640px;
+    height:2px;
+    background:black;
+    margin-top:2em;
+    margin-bottom:2em;
+    clear:both;
+}
+
+.gameColumn {
+    width:50%;
+    float:left;
+    margin-bottom:2em;
+}
+
+.playerMove {
+    width:210px;
+    float:right;
+}
+
+.playerMoveContain {
+    width:120px;
+    float:right;
+}
+
+.playerMoveContain img {
+    width:120px;
+    height:120px;
+    float:right;
+}
+
+.playerMove button {
+    float:right;
+    height:40px;
+    width:90px;
+    background:white;
+    border:solid black 3px;
+    margin-bottom:.25em;
+    font-weight: bold;
+}
+
+.playerMove button:active {
+    background:gray;
+    color:white;
+}
+
+.aiMove {
+    width:200px;
+    float:left;
+}
+
+.aiMoveContain {
+    width:120px;
+    float:left;
+}
+
+.aiMoveContain img {
+    width:120px;
+    height:120px;
+    float:left;
+}
+
+#playerMoveText, #aiMoveText {
+    font-size:1em;
+    text-align:center;
+    font-weight: bold;
+}
+
+.result {
+    text-align: center;
+    color:red;
+    font-weight:bold;
+    font-size:1.5em;
+    margin-bottom:1em;
+}
+
+table {
+    display:block;
+    width:480px;
+    margin:auto;
+    border-collapse:collapse;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color:#dddddd;
+}
+
+td {
+    width:120px;
+    border-bottom:1px solid #ddd;
+    padding:.5em;
+    text-align: center;
+}

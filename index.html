@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Rock | Paper | Scissors</title>
+    
+    <meta charset="utf-8">
+    
+    <!-- fix mobile sizing-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link type="text/css" rel="stylesheet" href="normalize.css">    
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="modalStyle.css">
+    
+</head>
+<body>
+
+    <script type="text/javascript" src="rps.js"></script> <!--GAMEPLAY-->
+    <script type="text/javascript" src="modal.js"></script> <!--MODALS-->
+    
+    
+    <h1>Rock | Paper | Scissors</h1>
+    <h2>Cody Brown | Joe Goff | Myron Judkins</h2>
+    <h3>CIT 381 | Game Theory & Artificial Intelligence</h3>
+
+    
+    <hr>
+    
+    <div class=result>RESULT</div>
+    
+    <div class="gameColumn">
+        <div class="playerMove">
+            <div class="playerMoveContain">
+                <img src="images/scissors.png">
+                <div id="playerMoveText">PlayerMove</div>
+            </div>
+
+            <button>Rock</button>
+            <button>Paper</button>
+            <button>Scissors</button>
+        </div>
+    </div>
+    
+    <div class="gameColumn">
+        <div class="aiMove">
+            <div class="aiMoveContain">
+                <img src="images/scissors.png">
+                <div id="aiMoveText">AIMove</div>
+            </div>
+
+        </div>
+    </div>
+    
+    <hr>
+    
+    <table>
+        <tr>
+            <th>Move</th>
+            <th>Player</th>
+            <th>AI</th>
+            <th>Winner</th>
+        </tr>
+        <tr>
+            <td>Last Move</td>
+            <td>Paper</td>
+            <td>Rock</td>
+            <td>AI</td>
+        </tr>
+        <tr>
+            <td>2 Moves Ago</td>
+            <td>Rock</td>
+            <td>Scissors</td>
+            <td>Player</td>
+        </tr>
+        <tr>
+            <td>3 Moves Ago</td>
+            <td>Scissors</td>
+            <td>Rock</td>
+            <td>AI</td>
+        </tr>
+        <tr>
+            <td>4 Moves Ago</td>
+            <td>Scissors</td>
+            <td>Paper</td>
+            <td>Player</td>
+        </tr>
+        <tr>
+            <td>5 Moves Ago</td>
+            <td>Rock</td>
+            <td>Paper</td>
+            <td>AI</td>
+        </tr>
+        
+    </table>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!--RED WINS MODAL-->
+    <div id="youWinModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onClick="youWinClose()">&times;</span>
+            <p>YOU WIN!</p>
+        </div>
+    </div>
+    
+    <!--BLUE WINS MODAL-->
+    <div id="aiWinModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onClick="aiWinClose()">&times;</span>
+            <p>COMPUTER WINS!</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!-- Open Hand by icon 54 from the Noun Project -->
+<!-- Fist by Isabel Foo from the Noun Project   -->
+<!-- Peace by Piero Borgo from the Noun Project -->
