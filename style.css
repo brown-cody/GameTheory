@@ -61,6 +61,10 @@ hr {
     color:white;
 }
 
+.playerMove button:hover {
+    background-color:#dddddd;
+}
+
 .aiMove {
     width:200px;
     float:left;
