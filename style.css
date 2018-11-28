@@ -56,13 +56,13 @@ hr {
     font-weight: bold;
 }
 
+.playerMove button:hover {
+    background:#dddddd;
+}
+
 .playerMove button:active {
     background:gray;
     color:white;
-}
-
-.playerMove button:hover {
-    background-color:#dddddd;
 }
 
 .aiMove {
