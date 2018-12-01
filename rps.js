@@ -4,13 +4,15 @@ var aiMove;
 var aiMoveInt;
 var result;
 var winner;
-
+var setMove;
+var arraySize;
+/*
 var move0 = {playerMove:"testplayer0", aiMove:"testai0", winner:"testwinner0"};
 var move1 = {playerMove:"testplayer1", aiMove:"testai1", winner:"testwinner1"};
 var move2 = {playerMove:"testplayer2", aiMove:"testai2", winner:"testwinner2"};
 var move3 = {playerMove:"testplayer3", aiMove:"testai3", winner:"testwinner3"};
 var move4 = {playerMove:"testplayer4", aiMove:"testai4", winner:"testwinner4"};
-
+*/
 //var moves = [move0, move1, move2, move3, move4];
 var moves = [];
 
@@ -81,24 +83,32 @@ function getResult() {
     document.getElementById("result").innerHTML = result;
     
     setResult();
-    logToConsole();
+
 }
 
 function setResult() {
-    var move = {playerMove:playerMove, aiMove:aiMove, winner:winner};
-    moves.push(move);
+    setMove = {playerMove:playerMove, aiMove:aiMove, winner:winner};
+    
+    moves.push(setMove);
+    
+    if (moves.length > 5) {
+        moves.shift();
+    }
+    
+    arraySize = moves.length - 1;
     
     logResult();
+    logToConsole();
 }
 
 function logResult() {
     
-    /*var i;
-    for (i = 0; i < 5; i++) {
-        document.getElementById("player" + i).innerHTML = moves[i].playerMove;
-        document.getElementById("ai" + i).innerHTML = moves[i].aiMove;
-        document.getElementById("winner" + i).innerHTML = moves[i].winner;
-    } */
+    var i;
+    for (i = 0; i < moves.length; i++) {
+        document.getElementById("player" + i).innerHTML = moves[arraySize - i].playerMove;
+        document.getElementById("ai" + i).innerHTML = moves[arraySize - i].aiMove;
+        document.getElementById("winner" + i).innerHTML = moves[arraySize - i].winner;
+    }
 }
 
 
@@ -108,4 +118,8 @@ function logToConsole() {
     console.log("AI Move: " + aiMove);
     console.log("Winner var: " + winner);
     console.log("Result field: " + result);
+    console.log('MOVES.LENGTH: ' + moves.length);
+    console.log('ARRAYSIZE: ' + arraySize);
+    console.log('MOVE ARRAY: ' + moves[arraySize].playerMove + ', ' + moves[arraySize].aiMove + ', ' + moves[arraySize].winner);
+    console.log('-----------------------------------------------------------------------');
 }
