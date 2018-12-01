@@ -6,19 +6,11 @@ var result;
 var winner;
 var setMove;
 var arraySize;
-/*
-var move0 = {playerMove:"testplayer0", aiMove:"testai0", winner:"testwinner0"};
-var move1 = {playerMove:"testplayer1", aiMove:"testai1", winner:"testwinner1"};
-var move2 = {playerMove:"testplayer2", aiMove:"testai2", winner:"testwinner2"};
-var move3 = {playerMove:"testplayer3", aiMove:"testai3", winner:"testwinner3"};
-var move4 = {playerMove:"testplayer4", aiMove:"testai4", winner:"testwinner4"};
-*/
-//var moves = [move0, move1, move2, move3, move4];
 var moves = [];
 
 function playerThrow(move) {
     playerMove = move;
-    document.getElementById("playerMoveText").style = "visibility:visible;"
+    document.getElementById("playerMoveText").style = "visibility:visible;";
     document.getElementById("playerMoveText").innerHTML = move;
     document.getElementById("playerMoveImage").src = 'images/player_' + move + '.png';
     
@@ -41,7 +33,7 @@ function aiThrow() {
     }
     
 
-    document.getElementById("aiMoveText").style = "visibility:visible;"
+    document.getElementById("aiMoveText").style = "visibility:visible;";
     document.getElementById("aiMoveText").innerHTML = aiMove;
     document.getElementById("aiMoveImage").src = 'images/ai_' + aiMove + '.png';
     
@@ -103,11 +95,15 @@ function setResult() {
 
 function logResult() {
     
+    document.getElementById("rowh").style = "visibility:visible;";
+    
     var i;
     for (i = 0; i < moves.length; i++) {
         document.getElementById("player" + i).innerHTML = moves[arraySize - i].playerMove;
         document.getElementById("ai" + i).innerHTML = moves[arraySize - i].aiMove;
         document.getElementById("winner" + i).innerHTML = moves[arraySize - i].winner;
+        
+        document.getElementById("row" + i).style = "visibility:visible;";
     }
 }
 
