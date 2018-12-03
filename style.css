@@ -25,6 +25,14 @@ hr {
     clear:both;
 }
 
+#scoreTop {
+    margin-bottom: .5em;
+}
+
+#scoreBottom {
+    margin-top: .5em;
+}
+
 .gameColumn {
     width:50%;
     float:left;
@@ -47,7 +55,29 @@ hr {
     float:right;
 }
 
-.playerMove button {
+
+
+#resetButton {
+    float:left;
+    height:35px;
+    width:80px;
+    background:white;
+    border:solid black 3px;
+    margin:.5em 0em .5em 1.5em;
+    font-weight: bold;
+    font-size:.9em;
+}
+
+#resetButton:hover {
+    background:#dddddd;
+}
+
+#resetButton:active {
+    background:gray;
+    color:white;
+}
+
+button {
     float:right;
     height:35px;
     width:80px;
@@ -58,11 +88,11 @@ hr {
     font-size:.9em;
 }
 
-.playerMove button:hover {
+button:hover {
     background:#dddddd;
 }
 
-.playerMove button:active {
+button:active {
     background:gray;
     color:white;
 }
@@ -91,6 +121,7 @@ hr {
 }
 
 .result {
+    clear:both;
     text-align: center;
     color:red;
     font-weight:bold;
@@ -98,6 +129,20 @@ hr {
     margin-bottom:1em;
     visibility:hidden;
 }
+
+.score {
+    width:20em;
+    display:block;
+    margin:auto;
+    text-align: center;
+}
+
+#playerScore, #aiScore {
+    color:red;
+    font-size: 2em;
+    margin:0 1em;
+}
+
 
 table {
     margin:auto;
@@ -117,6 +162,89 @@ td {
     border-bottom:1px solid #ddd;
     padding:.5em;
     text-align: center;
+}
+
+.gameControl {
+    display:block;
+    width:280px;
+    margin:auto;
+}
+
+.gameControl div {
+    float:left;
+    font-weight:bold;
+    margin:1em .5em;
+}
+
+.gameControl label {
+    float:left;
+    margin:.5em 0;
+}
+
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 @media only screen and (min-width: 450px) {
@@ -142,7 +270,6 @@ td {
         margin-bottom:2em;
     }
     
-    
     .playerMove {
         width:210px;
     }
@@ -156,7 +283,7 @@ td {
         height:120px;
     }
 
-    .playerMove button {
+    button {
         height:48px;
         width:90px;
         padding:default;
@@ -174,6 +301,11 @@ td {
     .aiMoveContain img {
         width:120px;
         height:120px;
+    }
+    
+    #playerScore, #aiScore {
+        font-size: 3em;
+        margin:0 1em;
     }
 
     td {

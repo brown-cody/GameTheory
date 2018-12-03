@@ -7,6 +7,35 @@ var winner;
 var setMove;
 var moves = [];
 var arraySize;
+var playerScore = 0;
+var aiScore = 0;
+
+function resetGame() {
+    document.getElementById("playerMoveText").style = "visibility:hidden;";
+    document.getElementById("playerMoveImage").src = 'images/unknown.png';
+    document.getElementById("aiMoveText").style = "visibility:hidden;";
+    document.getElementById("aiMoveImage").src = 'images/unknown.png';
+    document.getElementById("rowh").style = "visibility:hidden;";
+    document.getElementById("result").style = "visibility:hidden;";
+    document.getElementById("playerScore").innerHTML = "-";
+    document.getElementById("aiScore").innerHTML = "-";
+    
+    var i;
+    for (i = 0; i < moves.length; i++) {
+        document.getElementById("row" + i).style = "visibility:hidden;";
+    }
+    
+    playerMove = null;
+    aiMove = null;
+    aiMoveInt = null;
+    result = null;
+    winner = null;
+    setMove = null;
+    moves = [];
+    arraySize = null;
+    playerScore = 0;
+    aiScore = 0;
+}
 
 function playerThrow(move) {
     
@@ -21,7 +50,14 @@ function playerThrow(move) {
 
 function aiThrow() {
     
-    aiMoveInt = Math.floor(Math.random() * 3); // randomly chooses a 0, 1, or 2
+    if (document.getElementById("aiCheck").checked == true) {
+        result = "ERROR: AI Not Implemented."
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("result").style = "visibility:visible;";
+        return;
+    } else {
+        aiMoveInt = Math.floor(Math.random() * 3); // randomly chooses a 0, 1, or 2
+    }
     
     switch (aiMoveInt) {
         case 0:
@@ -73,8 +109,16 @@ function getResult() {
         winner = "Tie";
     } 
     
+    if (winner === "Player") {
+        playerScore++;
+        document.getElementById("playerScore").innerHTML = playerScore;
+    } else if (winner === "AI") {
+        aiScore++;
+        document.getElementById("aiScore").innerHTML = aiScore;
+    }
+    
     document.getElementById("result").innerHTML = result;
-    document.getElementById("result").style = "visibility:visible;"
+    document.getElementById("result").style = "visibility:visible;";
     
     setResult();
 }
