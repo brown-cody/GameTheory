@@ -1,26 +1,27 @@
 h1 {
     text-align: center;
-    margin-bottom:1em;
+    margin-bottom:0;
+    font-size:1.5em;
 }
 
 h2 {
     text-align: center;
-    font-size:1em;
+    font-size:.9em;
     margin:.5em;
 }
 
 h3 {
     text-align: center;
-        font-size:1em;
+    font-size:.8em;
     margin:.5em;
 }
 
 hr {
-    width:640px;
+    width:380px;
     height:2px;
     background:black;
-    margin-top:2em;
-    margin-bottom:2em;
+    margin-top:1em;
+    margin-bottom:1em;
     clear:both;
 }
 
@@ -31,29 +32,30 @@ hr {
 }
 
 .playerMove {
-    width:210px;
+    width:180px;
     float:right;
 }
 
 .playerMoveContain {
-    width:120px;
+    width:80px;
     float:right;
 }
 
 .playerMoveContain img {
-    width:120px;
-    height:120px;
+    width:80px;
+    height:80px;
     float:right;
 }
 
 .playerMove button {
     float:right;
-    height:40px;
-    width:90px;
+    height:35px;
+    width:80px;
     background:white;
     border:solid black 3px;
     margin-bottom:.25em;
     font-weight: bold;
+    font-size:.9em;
 }
 
 .playerMove button:hover {
@@ -66,18 +68,18 @@ hr {
 }
 
 .aiMove {
-    width:200px;
+    width:180px;
     float:left;
 }
 
 .aiMoveContain {
-    width:120px;
+    width:80px;
     float:left;
 }
 
 .aiMoveContain img {
-    width:120px;
-    height:120px;
+    width:80px;
+    height:80px;
     float:left;
 }
 
@@ -98,8 +100,6 @@ hr {
 }
 
 table {
-    display:block;
-    width:480px;
     margin:auto;
     border-collapse:collapse;
 }
@@ -114,8 +114,72 @@ tr:hover {
 }
 
 td {
-    width:120px;
     border-bottom:1px solid #ddd;
     padding:.5em;
     text-align: center;
+}
+
+@media only screen and (min-width: 450px) {
+    
+    h1 {
+        margin-bottom:1em;
+        font-size:2em;
+    }
+
+    h2 {
+        font-size:1em;
+        margin:.5em;
+    }
+
+    h3 {
+        font-size:1em;
+        margin:.5em;
+    }
+    
+    hr {
+        width:450px;
+        margin-top:2em;
+        margin-bottom:2em;
+    }
+    
+    
+    .playerMove {
+        width:210px;
+    }
+
+    .playerMoveContain {
+        width:120px;
+    }
+
+    .playerMoveContain img {
+        width:120px;
+        height:120px;
+    }
+
+    .playerMove button {
+        height:48px;
+        width:90px;
+        padding:default;
+        font-size:1em;
+    }
+
+    .aiMove {
+        width:200px;
+    }
+
+    .aiMoveContain {
+        width:120px;
+    }
+
+    .aiMoveContain img {
+        width:120px;
+        height:120px;
+    }
+
+    td {
+        width:100px;
+        
+    }
+    
+    
 }
