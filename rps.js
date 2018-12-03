@@ -5,19 +5,22 @@ var aiMoveInt;
 var result;
 var winner;
 var setMove;
-var arraySize;
 var moves = [];
+var arraySize;
 
 function playerThrow(move) {
+    
     playerMove = move;
-    document.getElementById("playerMoveText").style = "visibility:visible;";
+    
     document.getElementById("playerMoveText").innerHTML = move;
+    document.getElementById("playerMoveText").style = "visibility:visible;";
     document.getElementById("playerMoveImage").src = 'images/player_' + move + '.png';
     
     aiThrow();
 }
 
 function aiThrow() {
+    
     aiMoveInt = Math.floor(Math.random() * 3); // randomly chooses a 0, 1, or 2
     
     switch (aiMoveInt) {
@@ -32,16 +35,14 @@ function aiThrow() {
             break;
     }
     
-
-    document.getElementById("aiMoveText").style = "visibility:visible;";
     document.getElementById("aiMoveText").innerHTML = aiMove;
+    document.getElementById("aiMoveText").style = "visibility:visible;";
     document.getElementById("aiMoveImage").src = 'images/ai_' + aiMove + '.png';
     
     getResult();
 }
 
 function getResult() {
-    document.getElementById("result").style = "visibility:visible;"
     
     if (playerMove === "Rock" && aiMove === "Rock") {
         result = "It's a Tie! Try again.";
@@ -73,12 +74,13 @@ function getResult() {
     } 
     
     document.getElementById("result").innerHTML = result;
+    document.getElementById("result").style = "visibility:visible;"
     
     setResult();
-
 }
 
 function setResult() {
+    
     setMove = {playerMove:playerMove, aiMove:aiMove, winner:winner};
     
     moves.push(setMove);
@@ -110,12 +112,12 @@ function logResult() {
 
 
 function logToConsole() {
-    console.log("Player Move: " + playerMove);
-    console.log("AI Move: " + aiMove);
-    console.log("Winner var: " + winner);
-    console.log("Result field: " + result);
-    console.log('MOVES.LENGTH: ' + moves.length);
-    console.log('ARRAYSIZE: ' + arraySize);
-    console.log('MOVE ARRAY: ' + moves[arraySize].playerMove + ', ' + moves[arraySize].aiMove + ', ' + moves[arraySize].winner);
-    console.log('-----------------------------------------------------------------------');
+    console.log("Player Move:  " + playerMove);
+    console.log("AI Move:      " + aiMove);
+    console.log("Winner:       " + winner);
+    console.log("Result:       " + result);
+    console.log("moves.length: " + moves.length);
+    console.log("arraySize:    " + arraySize);
+    console.log("Log:          " + moves[arraySize].playerMove + ', ' + moves[arraySize].aiMove + ', ' + moves[arraySize].winner);
+    console.log("--------------------------------------------");
 }
