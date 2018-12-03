@@ -17,7 +17,7 @@ footer {
 }
 
 hr {
-    width:380px;
+    width:300px;
     height:2px;
     background:black;
     margin-top:1em;
@@ -40,7 +40,7 @@ hr {
 }
 
 .playerMove {
-    width:180px;
+    width:160px;
     float:right;
 }
 
@@ -98,7 +98,7 @@ button:active {
 }
 
 .aiMove {
-    width:180px;
+    width:160px;
     float:left;
 }
 
