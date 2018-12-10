@@ -9,6 +9,8 @@ var moves = [];
 var arraySize;
 var playerScore = 0;
 var aiScore = 0;
+var modeLog;
+var aiResult;
 
 
 // RESETS ALL GAME VARIABLES, TRIGGERED BY RESET BUTTON AND GAME MODE TOGGLE
@@ -58,17 +60,20 @@ function playerThrow(move) {
 // INTERPRET AI/RANDOM THROW AND OUTPUT
 function aiThrow() {
     
-    if (document.getElementById("aiCheck").checked == true) {
-        result = "ERROR: AI Not Implemented."
-        document.getElementById("result").innerHTML = result;
-        document.getElementById("result").style = "visibility:visible;";
+    if (document.getElementById("aiCheck").checked == true && arraySize != null) {
+        //result = "ERROR: AI Not Implemented."
+        //document.getElementById("result").innerHTML = result;
+        //document.getElementById("result").style = "visibility:visible;";
+        //return;
         
         // INSERT AI MODEL FUNCTION HERE
-        // getAiThrow()
+        aiMoveInt = getAiThrow();
         
-        return;
+        
     } else {
         aiMoveInt = Math.floor(Math.random() * 3); // randomly chooses a 0, 1, or 2
+        modeLog = 'Random';
+        aiResult = 'AI not used this round.';
     }
     
     switch (aiMoveInt) {
@@ -88,6 +93,48 @@ function aiThrow() {
     document.getElementById("aiMoveImage").src = 'images/ai_' + aiMove + '.png';
     
     getResult();
+}
+
+// AI LOGIC
+// WINNING PLAYERS CHOOSE THE SAME MOVE
+// LOSING PLAYERS CHOOSE THE NEXT MOVE
+function getAiThrow() {
+    
+    modeLog = 'AI - Winning Player Remains';
+    var movePredict;
+    var aiMove;
+    var previousMoveInt;
+    
+    switch (moves[arraySize].playerMove) {
+        case 'Rock':
+            previousMoveInt = 0;
+            break;
+        case 'Paper':
+            previousMoveInt = 1;
+            break;
+        case 'Scissors':
+            previousMoveInt = 2;
+            break;
+    }
+    
+
+    if (moves[arraySize].winner == 'Player') {
+        movePredict = previousMoveInt + 1;
+        if (movePredict == 3) {
+            movePredict = 0;
+        }
+        aiResult = 'Player won last round, counteracting same move.';
+    } else {
+        aiResult = 'Player lost last round, counteracting next move';
+        movePredict = previousMoveInt + 2;
+        if (movePredict == 3) {
+            movePredict = 0;
+        } else if (movePredict == 4) {
+            movePredict = 1;
+        }
+    }
+
+    return movePredict;
 }
 
 
@@ -177,11 +224,16 @@ function logResult() {
 //OUTPUT VARIABLE SETTING TO CONSOLE
 function logToConsole() {
     console.log("Player Move:  " + playerMove);
+    console.log("-----------------------------------------");
+    console.log("Mode:         " + modeLog);
+    console.log(aiResult);
+    console.log('-----------------------------------------');
     console.log("AI Move:      " + aiMove);
     console.log("Winner:       " + winner);
     console.log("Result:       " + result);
     console.log("moves.length: " + moves.length);
     console.log("arraySize:    " + arraySize);
     console.log("Log:          " + moves[arraySize].playerMove + ', ' + moves[arraySize].aiMove + ', ' + moves[arraySize].winner);
-    console.log("--------------------------------------------");
+    console.log("+++++++++++++++++++++++++++++++++++++++++");
+
 }
