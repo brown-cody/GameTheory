@@ -10,6 +10,8 @@ var arraySize;
 var playerScore = 0;
 var aiScore = 0;
 
+
+// RESETS ALL GAME VARIABLES, TRIGGERED BY RESET BUTTON AND GAME MODE TOGGLE
 function resetGame() {
     document.getElementById("playerMoveText").style = "visibility:hidden;";
     document.getElementById("playerMoveImage").src = 'images/unknown.png';
@@ -37,6 +39,8 @@ function resetGame() {
     aiScore = 0;
 }
 
+
+// ASSIGN PLAYER MOVE TO RELEVANT VARIABLES AND DISPLAY
 function playerThrow(move) {
     
     playerMove = move;
@@ -48,12 +52,20 @@ function playerThrow(move) {
     aiThrow();
 }
 
+
+// LOOK AT GAME MODE TO DETERMINE IF AI OR RANDOM IS USED
+// 0=ROCK, 1=PAPER, 2=SCISSORS
+// INTERPRET AI/RANDOM THROW AND OUTPUT
 function aiThrow() {
     
     if (document.getElementById("aiCheck").checked == true) {
         result = "ERROR: AI Not Implemented."
         document.getElementById("result").innerHTML = result;
         document.getElementById("result").style = "visibility:visible;";
+        
+        // INSERT AI MODEL FUNCTION HERE
+        // getAiThrow()
+        
         return;
     } else {
         aiMoveInt = Math.floor(Math.random() * 3); // randomly chooses a 0, 1, or 2
@@ -78,6 +90,10 @@ function aiThrow() {
     getResult();
 }
 
+
+// TAKE PLAYERMOVE AND AIMOVE AND DETERMINE WHO WINS
+// INCREMENT PLAYER AND AI SCORES
+// OUTPUT RESULTS
 function getResult() {
     
     if (playerMove === "Rock" && aiMove === "Rock") {
@@ -123,6 +139,8 @@ function getResult() {
     setResult();
 }
 
+
+// SAVE GAME HISTORY OBJECTS TO MOVES ARRAY
 function setResult() {
     
     setMove = {playerMove:playerMove, aiMove:aiMove, winner:winner};
@@ -139,6 +157,8 @@ function setResult() {
     logToConsole();
 }
 
+
+//OUTPUT GAME HISTORY TO TABLE
 function logResult() {
     
     document.getElementById("rowh").style = "visibility:visible;";
@@ -154,7 +174,7 @@ function logResult() {
 }
 
 
-
+//OUTPUT VARIABLE SETTING TO CONSOLE
 function logToConsole() {
     console.log("Player Move:  " + playerMove);
     console.log("AI Move:      " + aiMove);
