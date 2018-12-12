@@ -225,13 +225,13 @@ function logToConsole() {
     console.log('nn:'+nn+' np:'+np+' ns:'+ns+' pn:'+pn+' pp:'+pp+' ps:'+ps+' sn:'+sn+' sp:'+sp+' ss:'+ss);
     console.log('Win ratio per AI Mode:')
     console.log('nn:'+nnp+' np:'+npp+' ns:'+nsp+' pn:'+pnp+' pp:'+ppp+' ps:'+psp+' sn:'+snp+' sp:'+spp+' ss:'+ssp);
-    console.log('-----------------------------------------');
     console.log("AI Move:      " + aiMove);
-    console.log("Winner:       " + winner);
-    console.log("Result:       " + result);
-    console.log("moves.length: " + moves.length);
-    console.log("arraySize:    " + arraySize);
-    console.log("Log:          " + moves[arraySize].playerMove + ', ' + moves[arraySize].aiMove + ', ' + moves[arraySize].winner);
+    console.log('-----------------------------------------');
+    console.log("Winner:         " + winner);
+    console.log("Result:         " + result);
+    //console.log("moves.length: " + moves.length);
+    //console.log("arraySize:    " + arraySize);
+    console.log("Log to Browser: " + moves[arraySize].playerMove + ', ' + moves[arraySize].aiMove + ', ' + moves[arraySize].winner);
     console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 }
