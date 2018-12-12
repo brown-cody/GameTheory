@@ -2,6 +2,7 @@
 var playerMove;
 var aiMove;
 var aiMoveInt;
+var previousMoveInt;
 var result;
 var winner;
 var setMove;
@@ -11,6 +12,28 @@ var playerScore = 0;
 var aiScore = 0;
 var modeLog;
 var aiResult;
+
+var nn = 0;
+var np = 0;
+var ns = 0;
+var pn = 0;
+var pp = 0;
+var ps = 0;
+var sn = 0;
+var sp = 0;
+var ss = 0;
+
+var aiWinTotal;
+
+var nnp = 0;
+var npp = 0;
+var nsp = 0;
+var pnp = 0;
+var ppp = 0;
+var psp = 0;
+var snp = 0;
+var spp = 0;
+var ssp = 0;
 
 
 // RESETS ALL GAME VARIABLES, TRIGGERED BY RESET BUTTON AND GAME MODE TOGGLE
@@ -61,15 +84,160 @@ function playerThrow(move) {
 function aiThrow() {
     
     if (document.getElementById("aiCheck").checked == true && arraySize != null) {
-        //result = "ERROR: AI Not Implemented."
-        //document.getElementById("result").innerHTML = result;
-        //document.getElementById("result").style = "visibility:visible;";
-        //return;
         
-        // INSERT AI MODEL FUNCTION HERE
-        aiMoveInt = getAiThrow();
+        translateMove();
         
+        // TRY ALL 9 AI MODEL PERMUTATIONS
+        nn += aiTry(nextNext());
+        np += aiTry(nextPrev());
+        ns += aiTry(nextSame());
+        pn += aiTry(prevNext());
+        pp += aiTry(prevPrev());
+        ps += aiTry(prevSame());
+        sn += aiTry(sameNext());
+        sp += aiTry(samePrev());
+        ss += aiTry(sameSame());
         
+        aiWinTotal = nn+np+ns+pn+pp+ps+sn+sp+ss;
+        
+        nnp = (nn/aiWinTotal).toFixed(2);
+        npp = (np/aiWinTotal).toFixed(2);
+        nsp = (ns/aiWinTotal).toFixed(2);
+        pnp = (pn/aiWinTotal).toFixed(2);
+        ppp = (pp/aiWinTotal).toFixed(2);
+        psp = (ps/aiWinTotal).toFixed(2);
+        snp = (sn/aiWinTotal).toFixed(2);
+        spp = (sp/aiWinTotal).toFixed(2);
+        ssp = (ss/aiWinTotal).toFixed(2);
+        
+        var a = nnp;
+        var b = npp;
+        var choice = 'nnp';
+        
+        console.log(choice + ' ' + a + ' npp ' + b);
+        
+        if (a > b) {
+            //choice = 'nnp';
+            b = nsp;
+        } else {
+            a = b;
+            choice = 'npp'
+            b = pnp;
+        }
+        
+        console.log('CHOICE: ' + choice)
+        console.log(choice + ' ' + a + ' nsp ' + b);
+        
+        if (a > b) {
+            //choice = 'npp';
+            b = pnp;
+        } else {
+            a = b;
+            choice = 'nsp'
+            b = ppp;
+        }
+        
+        console.log('CHOICE: ' + choice)
+        console.log(choice + ' ' + a + ' pnp ' + b);
+        
+        if (a > b) {
+            //choice = 'nsp';
+            b = ppp;
+        } else {
+            a = b;
+            choice = 'pnp'
+            b = psp;
+        }
+        
+        console.log('CHOICE: ' + choice)
+        console.log(choice + ' ' + a + ' ppp ' + b);
+        
+        if (a > b) {
+            //choice = 'pnp';
+            b = psp;
+        } else {
+            a = b;
+            choice = 'ppp'
+            b = snp;
+        }
+        
+        console.log('CHOICE: ' + choice)
+        console.log(choice + ' ' + a + ' psp ' + b);
+        
+        if (a > b) {
+            //choice = 'ppp';
+            b = snp;
+        } else {
+            a = b;
+            choice = 'psp'
+            b = spp;
+        }
+        
+        console.log('CHOICE: ' + choice)
+        console.log(choice + ' ' + a + ' snp ' + b);
+        
+        if (a > b) {
+            //choice = 'psp';
+            b = spp;
+        } else {
+            a = b;
+            choice = 'snp'
+            b = ssp;
+        }
+        
+        console.log('CHOICE: ' + choice)
+        console.log(choice + ' ' + a + ' spp ' + b);
+        
+        if (a > b) {
+            //choice = 'snp';
+            b = ssp;
+        } else {
+            a = b;
+            choice = 'spp'
+            b = ssp;
+        }
+        
+        console.log('CHOICE: ' + choice)
+        console.log(choice + ' ' + a + ' ssp ' + b);
+        
+        if (a > b) {
+            //choice = 'spp';
+        } else {
+            choice = 'ssp'
+        }
+        console.log('CHOICE: ' + choice);
+        
+        switch (choice) {
+            case 'nnp':
+                aiMoveInt = nextNext();
+                break;
+            case 'npp':
+                aiMoveInt = nextPrev();
+                break;
+            case 'nsp':
+                aiMoveInt = nextSame();
+                break;
+            case 'pnp':
+                aiMoveInt = prevNext();
+                break;
+            case 'ppp':
+                aiMoveInt = prevPrev();
+                break;
+            case 'psp':
+                aiMoveInt = prevSame();
+                break;
+            case 'snp':
+                aiMoveInt = sameNext();
+                break;
+            case 'spp':
+                aiMoveInt = samePrev();
+                break;
+            case 'ssp':
+                aiMoveInt = sameSame();
+                break;
+        }
+                
+                
     } else {
         aiMoveInt = Math.floor(Math.random() * 3); // randomly chooses a 0, 1, or 2
         modeLog = 'Random';
@@ -95,15 +263,8 @@ function aiThrow() {
     getResult();
 }
 
-// AI LOGIC
-// WINNING PLAYERS CHOOSE THE SAME MOVE
-// LOSING PLAYERS CHOOSE THE NEXT MOVE
-function getAiThrow() {
-    
-    modeLog = 'AI - Winning Player Remains';
-    var movePredict;
-    var aiMove;
-    var previousMoveInt;
+// TRANSLATE PLAYERMOVE TO INTEGER
+function translateMove() {
     
     switch (moves[arraySize].playerMove) {
         case 'Rock':
@@ -116,26 +277,8 @@ function getAiThrow() {
             previousMoveInt = 2;
             break;
     }
-    
-
-    if (moves[arraySize].winner == 'Player') {
-        movePredict = previousMoveInt + 1;
-        if (movePredict == 3) {
-            movePredict = 0;
-        }
-        aiResult = 'Player won last round, counteracting same move.';
-    } else {
-        aiResult = 'Player lost last round, counteracting next move';
-        movePredict = previousMoveInt + 2;
-        if (movePredict == 3) {
-            movePredict = 0;
-        } else if (movePredict == 4) {
-            movePredict = 1;
-        }
-    }
-
-    return movePredict;
 }
+
 
 
 // TAKE PLAYERMOVE AND AIMOVE AND DETERMINE WHO WINS
@@ -227,6 +370,10 @@ function logToConsole() {
     console.log("-----------------------------------------");
     console.log("Mode:         " + modeLog);
     console.log(aiResult);
+    console.log('Total wins per AI Mode:')
+    console.log('nn:'+nn+' np:'+np+' ns:'+ns+' pn:'+pn+' pp:'+pp+' ps:'+ps+' sn:'+sn+' sp:'+sp+' ss:'+ss);
+    console.log('Win ratio per AI Mode:')
+    console.log('nn:'+nnp+' np:'+npp+' ns:'+nsp+' pn:'+pnp+' pp:'+ppp+' ps:'+psp+' sn:'+snp+' sp:'+spp+' ss:'+ssp);
     console.log('-----------------------------------------');
     console.log("AI Move:      " + aiMove);
     console.log("Winner:       " + winner);
