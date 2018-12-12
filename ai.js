@@ -10,6 +10,10 @@
 9 - Win Prev, Lose Prev
 */
 
+winWeight = 1;
+lossWeight = 0;
+
+
 // AI LOGIC 1
 // WINNING PLAYERS CHOOSE THE SAME MOVE
 // LOSING PLAYERS CHOOSE THE NEXT MOVE
@@ -283,9 +287,9 @@ function aiTry(attempt) {
     } 
     
     if (win === "AI") {
-        return 1;
+        return winWeight;
     } else {
-        return 0;
+        return lossWeight;
     }
     
 }
