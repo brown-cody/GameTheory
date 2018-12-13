@@ -65,27 +65,27 @@ function resetGame() {
     modeLog = null;
     aiResult = null;
     
-    var nn = 0;
-    var np = 0;
-    var ns = 0;
-    var pn = 0;
-    var pp = 0;
-    var ps = 0;
-    var sn = 0;
-    var sp = 0;
-    var ss = 0;
+    nn = 0;
+    np = 0;
+    ns = 0;
+    pn = 0;
+    pp = 0;
+    ps = 0;
+    sn = 0;
+    sp = 0;
+    ss = 0;
 
-    var aiWinTotal = null;
+    aiWinTotal = null;
 
-    var nnp = 0;
-    var npp = 0;
-    var nsp = 0;
-    var pnp = 0;
-    var ppp = 0;
-    var psp = 0;
-    var snp = 0;
-    var spp = 0;
-    var ssp = 0;
+    nnp = 0;
+    npp = 0;
+    nsp = 0;
+    pnp = 0;
+    ppp = 0;
+    psp = 0;
+    snp = 0;
+    spp = 0;
+    ssp = 0;
 }
 
 
