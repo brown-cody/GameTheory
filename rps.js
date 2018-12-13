@@ -62,6 +62,30 @@ function resetGame() {
     arraySize = null;
     playerScore = 0;
     aiScore = 0;
+    modeLog = null;
+    aiResult = null;
+    
+    var nn = 0;
+    var np = 0;
+    var ns = 0;
+    var pn = 0;
+    var pp = 0;
+    var ps = 0;
+    var sn = 0;
+    var sp = 0;
+    var ss = 0;
+
+    var aiWinTotal = null;
+
+    var nnp = 0;
+    var npp = 0;
+    var nsp = 0;
+    var pnp = 0;
+    var ppp = 0;
+    var psp = 0;
+    var snp = 0;
+    var spp = 0;
+    var ssp = 0;
 }
 
 
