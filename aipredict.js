@@ -14,15 +14,15 @@ function aiPredict() {
         
         // FIND THE WIN PERCENTAGE OF EACH AI MODEL
         aiWinTotal = nn+np+ns+pn+pp+ps+sn+sp+ss;
-        nnp = (nn/aiWinTotal * 100).toFixed(2);
-        npp = (np/aiWinTotal * 100).toFixed(2);
-        nsp = (ns/aiWinTotal * 100).toFixed(2);
-        pnp = (pn/aiWinTotal * 100).toFixed(2);
-        ppp = (pp/aiWinTotal * 100).toFixed(2);
-        psp = (ps/aiWinTotal * 100).toFixed(2);
-        snp = (sn/aiWinTotal * 100).toFixed(2);
-        spp = (sp/aiWinTotal * 100).toFixed(2);
-        ssp = (ss/aiWinTotal * 100).toFixed(2);
+        nnp = (nn/aiWinTotal).toFixed(4);
+        npp = (np/aiWinTotal).toFixed(4);
+        nsp = (ns/aiWinTotal).toFixed(4);
+        pnp = (pn/aiWinTotal).toFixed(4);
+        ppp = (pp/aiWinTotal).toFixed(4);
+        psp = (ps/aiWinTotal).toFixed(4);
+        snp = (sn/aiWinTotal).toFixed(4);
+        spp = (sp/aiWinTotal).toFixed(4);
+        ssp = (ss/aiWinTotal).toFixed(4);
         
         //TESTING BLOCK
         /*nnp=9;
@@ -36,98 +36,113 @@ function aiPredict() {
         ssp=1;*/
         
         // COMPARE ALL AI MODELS AND CHOOSE THE HIGHEST WIN PERCENTAGE
-        //console.log('CALCULATE ALL RESULT OF ALL POSSIBLE STRATEGIES')
+        console.log('CALCULATE ALL RESULT OF ALL POSSIBLE STRATEGIES');
         
         var a = nnp; 
         var b = npp; 
-        var choice = 'nnp'; 
+        var choiceA = 'nnp';
+        var choiceB = 'npp';
         
-        //console.log(choice + ' ' + a + ' npp ' + b);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
     
         if (a > b) {
             b = nsp; 
+            choiceB = 'nsp';
         } else {
             a = b;
-            choice = 'npp' 
+            choiceA = 'npp';
             b = nsp;
+            choiceB = 'nsp';
         }
         
-        //console.log('CHOICE: ' + choice)
-        //console.log(choice + ' ' + a + ' nsp ' + b);
+        console.log('Bigger (choiceA): ' + choiceA);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
         
         if (a > b) {
             b = pnp; 
+            choiceB = 'pnp';
         } else {
             a = b;
-            choice = 'nsp' 
+            choiceA = 'nsp';
             b = pnp; 
+            choiceB = 'pnp';
         }
         
-        //console.log('CHOICE: ' + choice)
-        //console.log(choice + ' ' + a + ' pnp ' + b);
+        console.log('Bigger (choiceA): ' + choiceA);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
         
         if (a > b) {
-            b = ppp; 
+            b = ppp;
+            choiceB = 'ppp';
         } else {
             a = b;
-            choice = 'pnp' 
-            b = ppp; 
+            choiceA = 'pnp';
+            b = ppp;
+            choiceB = 'ppp';
         }
         
-        //console.log('CHOICE: ' + choice)
-        //console.log(choice + ' ' + a + ' ppp ' + b);
+        console.log('Bigger (choiceA): ' + choiceA);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
         
         if (a > b) {
             b = psp;
+            choiceB = 'psp';
         } else {
             a = b;
-            choice = 'ppp'
+            choiceA = 'ppp';
             b = psp;
+            choiceB = 'psp';
         }
         
-        //console.log('CHOICE: ' + choice)
-        //console.log(choice + ' ' + a + ' psp ' + b);
+        console.log('Bigger (choiceA): ' + choiceA);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
         
         if (a > b) {
             b = snp;
+            choiceB = 'snp';
         } else {
             a = b;
-            choice = 'psp'
+            choiceA = 'psp';
             b = snp;
+            choiceB = 'snp';
         }
         
-        //console.log('CHOICE: ' + choice)
-        //console.log(choice + ' ' + a + ' snp ' + b);
+        console.log('Bigger (choiceA): ' + choiceA);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
         
         if (a > b) {
             b = spp;
+            choiceB = 'spp';
         } else {
             a = b;
-            choice = 'snp'
+            choiceA = 'snp';
             b = spp;
+            choiceB = 'spp';
         }
         
-        //console.log('CHOICE: ' + choice)
-        //console.log(choice + ' ' + a + ' spp ' + b);
+        console.log('Bigger (choiceA): ' + choiceA);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
         
         if (a > b) {
             b = ssp;
+            choiceB = 'ssp';
         } else {
             a = b;
-            choice = 'spp'
+            choiceA = 'spp';
             b = ssp;
+            choiceB = 'ssp';
         }
         
-        //console.log('CHOICE: ' + choice)
-        //console.log(choice + ' ' + a + ' ssp ' + b);
+        console.log('Bigger (choiceA): ' + choiceA);
+        console.log(choiceA + ' ' + a + ' ' + choiceB + ' ' + b);
         
         if (a > b) {
         } else {
-            choice = 'ssp'
+            choiceA = 'ssp';
         }
-        console.log('CHOICE: ' + choice);
+        console.log('Biggest (choiceA): ' + choiceA);
         
-        switch (choice) {
+        switch (choiceA) {
             case 'nnp':
                 aiMoveInt = nextNext();
                 break;
@@ -156,4 +171,15 @@ function aiPredict() {
                 aiMoveInt = sameSame();
                 break;
         }
+    
+        nnp = (nnp * 100).toFixed(2);
+        npp = (npp * 100).toFixed(2);
+        nsp = (nsp * 100).toFixed(2);
+        pnp = (pnp * 100).toFixed(2);
+        ppp = (ppp * 100).toFixed(2);
+        psp = (psp * 100).toFixed(2);
+        snp = (snp * 100).toFixed(2);
+        spp = (spp * 100).toFixed(2);
+        ssp = (ssp * 100).toFixed(2);
+        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
 }
