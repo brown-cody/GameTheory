@@ -36,7 +36,6 @@ function aiPredict() {
         ssp=1;*/
         
         // COMPARE ALL AI MODELS AND CHOOSE THE HIGHEST WIN PERCENTAGE
-        
         //console.log('CALCULATE ALL RESULT OF ALL POSSIBLE STRATEGIES')
         
         var a = nnp; 

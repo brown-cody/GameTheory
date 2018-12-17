@@ -248,7 +248,7 @@ function logToConsole() {
     console.log('Total wins per AI Mode:')
     console.log('nn:'+nn+' np:'+np+' ns:'+ns+' pn:'+pn+' pp:'+pp+' ps:'+ps+' sn:'+sn+' sp:'+sp+' ss:'+ss);
     console.log('Win ratio per AI Mode:')
-    console.log('nn:%'+nnp+' np:%'+npp+' ns:%'+nsp+' pn:%'+pnp+' pp:%'+ppp+' ps:%'+psp+' sn:%'+snp+' sp:%'+spp+' ss:%'+ssp);
+    console.log('nn:'+nnp+'% np:'+npp+'% ns:'+nsp+'% pn:'+pnp+'% pp:'+ppp+'% ps:'+psp+'% sn:'+snp+'% sp:'+spp+'% ss:'+ssp+'%');
     console.log("AI Move:      " + aiMove);
     console.log('-----------------------------------------');
     console.log("Winner:         " + winner);
