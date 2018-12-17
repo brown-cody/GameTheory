@@ -14,54 +14,65 @@ function aiPredict() {
         
         // FIND THE WIN PERCENTAGE OF EACH AI MODEL
         aiWinTotal = nn+np+ns+pn+pp+ps+sn+sp+ss;
-        nnp = (nn/aiWinTotal).toFixed(4);
-        npp = (np/aiWinTotal).toFixed(4);
-        nsp = (ns/aiWinTotal).toFixed(4);
-        pnp = (pn/aiWinTotal).toFixed(4);
-        ppp = (pp/aiWinTotal).toFixed(4);
-        psp = (ps/aiWinTotal).toFixed(4);
-        snp = (sn/aiWinTotal).toFixed(4);
-        spp = (sp/aiWinTotal).toFixed(4);
-        ssp = (ss/aiWinTotal).toFixed(4);
+        nnp = (nn/aiWinTotal * 100).toFixed(2);
+        npp = (np/aiWinTotal * 100).toFixed(2);
+        nsp = (ns/aiWinTotal * 100).toFixed(2);
+        pnp = (pn/aiWinTotal * 100).toFixed(2);
+        ppp = (pp/aiWinTotal * 100).toFixed(2);
+        psp = (ps/aiWinTotal * 100).toFixed(2);
+        snp = (sn/aiWinTotal * 100).toFixed(2);
+        spp = (sp/aiWinTotal * 100).toFixed(2);
+        ssp = (ss/aiWinTotal * 100).toFixed(2);
+        
+        //TESTING BLOCK
+        /*nnp=9;
+        npp=8;
+        nsp=7;
+        pnp=6;
+        ppp=5;
+        psp=4;
+        snp=3;
+        spp=2;
+        ssp=1;*/
         
         // COMPARE ALL AI MODELS AND CHOOSE THE HIGHEST WIN PERCENTAGE
         
         //console.log('CALCULATE ALL RESULT OF ALL POSSIBLE STRATEGIES')
         
-        var a = nnp;
-        var b = npp;
-        var choice = 'nnp';
+        var a = nnp; 
+        var b = npp; 
+        var choice = 'nnp'; 
         
         //console.log(choice + ' ' + a + ' npp ' + b);
-        
+    
         if (a > b) {
-            b = nsp;
+            b = nsp; 
         } else {
             a = b;
-            choice = 'npp'
-            b = pnp;
+            choice = 'npp' 
+            b = nsp;
         }
         
         //console.log('CHOICE: ' + choice)
         //console.log(choice + ' ' + a + ' nsp ' + b);
         
         if (a > b) {
-            b = pnp;
+            b = pnp; 
         } else {
             a = b;
-            choice = 'nsp'
-            b = ppp;
+            choice = 'nsp' 
+            b = pnp; 
         }
         
         //console.log('CHOICE: ' + choice)
         //console.log(choice + ' ' + a + ' pnp ' + b);
         
         if (a > b) {
-            b = ppp;
+            b = ppp; 
         } else {
             a = b;
-            choice = 'pnp'
-            b = psp;
+            choice = 'pnp' 
+            b = ppp; 
         }
         
         //console.log('CHOICE: ' + choice)
@@ -72,7 +83,7 @@ function aiPredict() {
         } else {
             a = b;
             choice = 'ppp'
-            b = snp;
+            b = psp;
         }
         
         //console.log('CHOICE: ' + choice)
@@ -83,7 +94,7 @@ function aiPredict() {
         } else {
             a = b;
             choice = 'psp'
-            b = spp;
+            b = snp;
         }
         
         //console.log('CHOICE: ' + choice)
@@ -94,7 +105,7 @@ function aiPredict() {
         } else {
             a = b;
             choice = 'snp'
-            b = ssp;
+            b = spp;
         }
         
         //console.log('CHOICE: ' + choice)
@@ -115,7 +126,7 @@ function aiPredict() {
         } else {
             choice = 'ssp'
         }
-        //console.log('CHOICE: ' + choice);
+        console.log('CHOICE: ' + choice);
         
         switch (choice) {
             case 'nnp':
