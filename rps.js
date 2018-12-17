@@ -35,6 +35,11 @@ var snp = 0;
 var spp = 0;
 var ssp = 0;
 
+var strategies = [];
+var setStrategy;
+var strategyScore;
+var strategyChoice;
+
 
 // RESETS ALL GAME VARIABLES, TRIGGERED BY RESET BUTTON AND GAME MODE TOGGLE
 function resetGame() {
@@ -86,6 +91,11 @@ function resetGame() {
     snp = 0;
     spp = 0;
     ssp = 0;
+    
+    strategies = [];
+    setStrategy = null;
+    strategyScore = null;
+    strategyChoice = null;
 }
 
 
@@ -111,7 +121,8 @@ function aiThrow() {
         
         translateMove();
         
-        aiPredict();
+        aiPredict(); //Strategy choices using variables and IF THENs
+        //aipredictb(); //Strategy choices using strategies object in FOR loop
                 
     } else {
         aiMoveInt = Math.floor(Math.random() * 3); // randomly chooses a 0, 1, or 2

@@ -1,6 +1,6 @@
 
 function aiPredict() {
-
+    
         // TRY ALL 9 AI MODEL PERMUTATIONS
         nn += Math.abs(aiTry(nextNext()));
         np += Math.abs(aiTry(nextPrev()));
